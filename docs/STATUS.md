@@ -87,26 +87,26 @@ docker compose logs -f
 
 ```bash
 # Health check
-curl http://localhost:8000/health
+curl http://localhost:8080/health
 
 # Criar arquivo de teste
 echo "# Test\n\nHello World" > test.md
 
 # Upload e conversão
-curl -X POST http://localhost:8000/convert \
+curl -X POST http://localhost:8080/convert \
   -F "source_type=file" \
   -F "file=@test.md"
 
 # Consultar status (substitua JOB_ID)
-curl http://localhost:8000/jobs/{JOB_ID}
+curl http://localhost:8080/jobs/{JOB_ID}
 
 # Obter resultado
-curl http://localhost:8000/jobs/{JOB_ID}/result
+curl http://localhost:8080/jobs/{JOB_ID}/result
 ```
 
 ### Documentação Interativa
 
-Acesse: http://localhost:8000/docs
+Acesse: http://localhost:8080/docs
 
 ## 📊 Funcionalidades Implementadas
 
@@ -116,21 +116,21 @@ Aceita todas as fontes através de parâmetros:
 
 1. **Upload de arquivo** (multipart/form-data)
    ```bash
-   curl -X POST http://localhost:8000/convert \
+   curl -X POST http://localhost:8080/convert \
      -F "source_type=file" \
      -F "file=@document.pdf"
    ```
 
 2. **URL pública** (JSON)
    ```bash
-   curl -X POST http://localhost:8000/convert \
+   curl -X POST http://localhost:8080/convert \
      -H "Content-Type: application/json" \
      -d '{"source_type": "url", "source": "https://example.com/doc.pdf"}'
    ```
 
 3. **Google Drive** (JSON + Authorization header)
    ```bash
-   curl -X POST http://localhost:8000/convert \
+   curl -X POST http://localhost:8080/convert \
      -H "Content-Type: application/json" \
      -H "Authorization: Bearer GOOGLE_TOKEN" \
      -d '{"source_type": "gdrive", "source": "FILE_ID"}'
@@ -138,7 +138,7 @@ Aceita todas as fontes através de parâmetros:
 
 4. **Dropbox** (JSON + Authorization header)
    ```bash
-   curl -X POST http://localhost:8000/convert \
+   curl -X POST http://localhost:8080/convert \
      -H "Content-Type: application/json" \
      -H "Authorization: Bearer DROPBOX_TOKEN" \
      -d '{"source_type": "dropbox", "source": "/path/to/file.pdf"}'
@@ -253,4 +253,4 @@ cd /var/www/doc2md
 docker compose up -d --build
 ```
 
-Então acesse: http://localhost:8000/docs
+Então acesse: http://localhost:8080/docs

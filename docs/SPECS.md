@@ -422,7 +422,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile.api
     ports:
-      - "8000:8000"
+      - "8000:8080"
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
